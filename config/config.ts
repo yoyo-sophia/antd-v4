@@ -3,6 +3,7 @@ import defaultSettings from './defaultSettings'; // https://umijs.org/config/
 
 import slash from 'slash2';
 import webpackPlugin from './plugin.config';
+
 const { pwa, primaryColor } = defaultSettings; // preview.pro.ant.design only do not use in your production ;
 // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
 
@@ -31,11 +32,11 @@ const plugins: IPlugin[] = [
       },
       pwa: pwa
         ? {
-            workboxPluginMode: 'InjectManifest',
-            workboxOptions: {
-              importWorkboxFrom: 'local',
-            },
-          }
+          workboxPluginMode: 'InjectManifest',
+          workboxOptions: {
+            importWorkboxFrom: 'local',
+          },
+        }
         : false, // default close dll, because issue https://github.com/ant-design/ant-design-pro/issues/4665
       // dll features https://webpack.js.org/plugins/dll-plugin/
       // dll: {
@@ -119,8 +120,8 @@ export default {
         {
           path: '/',
           component: '../layouts/BasicLayout',
-          Routes: ['src/pages/Authorized'],
-          authority: ['admin', 'user'],
+          Routes: [ 'src/pages/Authorized' ],
+          authority: [ 'admin', 'user' ],
           routes: [
             {
               path: '/dashboard',
@@ -143,6 +144,14 @@ export default {
                   component: './dashboard/workplace',
                 },
               ],
+            },
+            {
+              path: '/test',
+              routes: [ {
+                name: '测试',
+                path: '/test/create',
+                component: './partner/create',
+              } ],
             },
             {
               path: '/form',
@@ -312,7 +321,7 @@ export default {
             {
               path: '/',
               redirect: '/dashboard/analysis',
-              authority: ['admin', 'user'],
+              authority: [ 'admin', 'user' ],
             },
             {
               component: '404',
@@ -360,7 +369,7 @@ export default {
           .split('/')
           .map((a: string) => a.replace(/([A-Z])/g, '-$1'))
           .map((a: string) => a.toLowerCase());
-        return `antd-pro${arr.join('-')}-${localName}`.replace(/--/g, '-');
+        return `antd-pro${ arr.join('-') }-${ localName }`.replace(/--/g, '-');
       }
 
       return localName;

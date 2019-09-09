@@ -15,7 +15,7 @@
     "noUnusedLocals": true,
     "allowJs": true,
     "experimentalDecorators": true,
-    "strict": true,
+    "strict": false,
     "paths": {
       "@/*": ["./src/*"]
     }
