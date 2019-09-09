@@ -147,6 +147,8 @@ export default {
             },
             {
               path: '/test',
+              name:'test',
+              icon:'alert',
               routes: [ {
                 name: '测试',
                 path: '/test/create',

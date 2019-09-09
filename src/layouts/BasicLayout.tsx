@@ -94,7 +94,6 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
       });
     }
   };
-
   return (
     <>
       <ProLayout
