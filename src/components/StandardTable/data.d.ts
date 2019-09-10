@@ -1,17 +1,17 @@
 export interface TableListItem {
-  key: number;
+  key?: number;
   disabled?: boolean;
-  href: string;
-  avatar: string;
-  name: string;
-  title: string;
-  owner: string;
-  desc: string;
-  callNo: number;
-  status: number;
-  updatedAt: Date;
-  createdAt: Date;
-  progress: number;
+  href?: string;
+  avatar?: string;
+  name?: string;
+  title?: string;
+  owner?: string;
+  desc?: string;
+  callNo?: number;
+  status?: number;
+  updatedAt?: Date;
+  createdAt?: Date;
+  progress?: number;
 }
 
 export interface TableListPagination {
@@ -22,7 +22,7 @@ export interface TableListPagination {
 
 export interface TableListData {
   list: TableListItem[];
-  pagination: Partial<TableListPagination>;
+  pagination?: Partial<TableListPagination>;
 }
 
 export interface TableListParams {

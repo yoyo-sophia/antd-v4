@@ -15,7 +15,7 @@ import {
 import { Dispatch } from 'redux';
 import { FormComponentProps } from 'antd/es/form';
 import { connect } from 'dva';
-import StandardTable from '../../components/StandardTable';
+import StandardTable, { StandardTableColumnProps } from '../../components/StandardTable';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 
 message.config({
@@ -40,7 +40,10 @@ class Create extends Component<AdvancedFormProps> {
 
   state = {
     isActive: false,
-    benefitData: [],// 返利价格数据
+    benefitData: {
+      list: [],
+      pagination: {},
+    },// 返利价格数据
     // 编辑返利比例相关参数
     modalVisible: false,
     rowInfo: {
@@ -51,7 +54,7 @@ class Create extends Component<AdvancedFormProps> {
     lastBenefitValue: 0,
   };
 
-  columns = [
+  columns: StandardTableColumnProps[] = [
     {
       title: '订单总额',
       dataIndex: 'total',
@@ -89,7 +92,7 @@ class Create extends Component<AdvancedFormProps> {
       content: '是否删除此区间及其以下所有区间？',
       onOk() {
         this.setState({
-          benefitData: benefitData.splice(record.index, benefitData.length)
+          benefitData: benefitData.list.splice(record.index, benefitData.list.length)
         });
         confirm.destroy();
       },
@@ -213,7 +216,7 @@ class Create extends Component<AdvancedFormProps> {
               <Col xl={ 12 } lg={ 12 } md={ 12 } sm={ 24 } xs={ 24 }>
                 <StandardTable
                   selectedRows={ [] }
-                  dataSource={ benefitData }
+                  data={ benefitData }
                   columns={ this.columns }
                 />
               </Col>
