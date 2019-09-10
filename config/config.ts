@@ -146,12 +146,12 @@ export default {
               ],
             },
             {
-              path: '/test',
-              name:'test',
+              path: '/partner',
+              name:'代理商',
               icon:'alert',
               routes: [ {
-                name: '测试',
-                path: '/test/create',
+                name: '创建',
+                path: '/partner/create',
                 component: './partner/create',
               } ],
             },
